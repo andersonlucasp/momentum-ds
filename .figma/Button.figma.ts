@@ -1,24 +1,35 @@
 import figma from '@figma/code-connect';
-import { DsButton } from '../packages/react/src';
 
 /**
- * Maps Figma Button component to React DsButton
- * Opens on: Double-click the Button component in Figma → View code
+ * Momentum DS - Button Code Connect
+ *
+ * Maps Figma Button component to DsButton (React Native / Web)
+ *
+ * How to use:
+ * 1. In Figma, double-click the Button component
+ * 2. Click "Inspect" → Code Connect plugin (bottom panel)
+ * 3. See generated code
+ * 4. Copy snippet to your project
  */
+
+// React Native Example
 figma.connect(
-  DsButton,
+  'DsButton',
   'https://www.figma.com/design/FcocM09j8RbzY7rosjqKOz/DesignSystem---Teste?node-id=821-687',
   {
-    example: (props) => (
-      <DsButton
-        variant={props.variant || 'primary'}
-        size={props.size || 'md'}
-        disabled={props.disabled}
-        loading={props.loading}
-      >
-        {props.label || 'Button'}
-      </DsButton>
-    ),
+    example: (props) => `
+import { DsButton } from '@andersonlucasp/rn';
+
+<DsButton
+  variant="${props.variant || 'primary'}"
+  size="${props.size || 'md'}"
+  disabled={${props.disabled || false}}
+  loading={${props.loading || false}}
+  onPress={() => handlePress()}
+>
+  ${props.label || 'Button'}
+</DsButton>
+    `,
     props: {
       variant: figma.enum('Variant', {
         Primary: 'primary',
@@ -38,14 +49,9 @@ figma.connect(
 );
 
 /**
- * How to use Code Connect:
+ * Installation:
+ * npm install @andersonlucasp/rn @andersonlucasp/tokens
  *
- * 1. In Figma, select a Button component
- * 2. Click the Code Connect icon (plugin)
- * 3. See the React code that maps to this design
- * 4. Copy and use in your app
- *
- * Resources:
- * - https://www.figma.com/developers/api/code-connect/
- * - https://github.com/figma/code-connect
+ * Sizes: sm (32px), md (40px), lg (48px)
+ * Variants: primary (blue), secondary (gray), danger (red)
  */

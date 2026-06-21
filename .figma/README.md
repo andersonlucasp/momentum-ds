@@ -1,24 +1,47 @@
-# Figma Code Connect
+# Figma Code Connect - Momentum DS
 
-This directory contains Figma Code Connect mappings that link Figma components to their code implementations.
+This directory contains Code Connect mappings that link your Figma design components to **Momentum DS** code implementations.
+
+When you select a component in Figma and view Code Connect, you'll see the exact React Native code needed to implement that design.
 
 ## What is Code Connect?
 
-Code Connect is a Figma plugin that displays code snippets when you select a component in Figma. It's the bridge between your design and code.
+Code Connect is a Figma plugin that:
+1. Shows code snippets directly in Figma
+2. Keeps design and code synchronized
+3. Copies code with a single click
+4. Enables design-to-code workflow
 
-## How to Use
+## How to Use with Your Figma File
 
-### For Designers
-1. Open the Figma file: https://www.figma.com/design/FcocM09j8RbzY7rosjqKOz/DesignSystem---Teste
-2. Select a component (e.g., Button)
-3. Open the Code Connect plugin
-4. See the React/React Native code snippet
-5. Copy and share with developers
+### For Designers/Developers
 
-### For Developers
-1. Edit a `.figma.ts` file to update the mapping
-2. Run `npm run figma:connect` to upload to Figma
-3. Changes are immediately visible in Figma
+**Your Figma File:**
+https://www.figma.com/design/FcocM09j8RbzY7rosjqKOz/DesignSystem---Teste?node-id=821-687
+
+**To see Code Connect mappings:**
+
+1. Open Figma file (link above)
+2. Select a component (Button, Input, Card, Badge, etc.)
+3. **Open Code Connect plugin** (Plugins menu → Code Connect)
+4. See the React Native code snippet appear
+5. Click "Copy" to copy code to clipboard
+6. Paste into your project
+
+**Mapped Components:**
+- ✅ Button → `<DsButton />`
+- ✅ Card → `<DsCard />`
+- ✅ Badge → `<DsBadge />`
+- ✅ Input → `<DsInput />`
+- 🔄 More coming soon...
+
+### For Code/Design Sync
+
+**When to add Code Connect mappings:**
+1. You create a new component in Figma
+2. You implement it in code
+3. Add a new `.figma.ts` file mapping them
+4. Developers can then see code in Figma instantly
 
 ## File Structure
 
