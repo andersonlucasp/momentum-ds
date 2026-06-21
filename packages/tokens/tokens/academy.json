@@ -1,0 +1,60 @@
+{
+  "academy": {
+    "class": {
+      "status": {
+        "available": { "value": "{color.success.600}" },
+        "full": { "value": "{color.warning.600}" },
+        "cancelled": { "value": "{color.danger.600}" },
+        "past": { "value": "{color.neutral.500}" }
+      },
+      "badge": {
+        "padding": { "value": "{spacing.2} {spacing.3}" },
+        "borderRadius": { "value": "9999px" },
+        "fontSize": { "value": "{fontSize.xs}" }
+      }
+    },
+    "schedule": {
+      "slot": {
+        "height": { "value": "60px" },
+        "gap": { "value": "{spacing.2}" }
+      },
+      "timeSlot": {
+        "width": { "value": "80px" },
+        "fontSize": { "value": "{fontSize.sm}" }
+      }
+    },
+    "payment": {
+      "badge": {
+        "success": { "value": "{color.success.600}" },
+        "pending": { "value": "{color.warning.600}" },
+        "failed": { "value": "{color.danger.600}" }
+      },
+      "card": {
+        "borderRadius": { "value": "{spacing.3}" },
+        "padding": { "value": "{spacing.6}" },
+        "gap": { "value": "{spacing.4}" }
+      }
+    },
+    "instructor": {
+      "avatar": {
+        "size": { "value": "48px" },
+        "borderRadius": { "value": "50%" },
+        "border": { "value": "2px solid {color.primary.200}" }
+      },
+      "card": {
+        "padding": { "value": "{spacing.4}" },
+        "gap": { "value": "{spacing.3}" }
+      }
+    },
+    "reservation": {
+      "button": {
+        "height": { "value": "48px" },
+        "borderRadius": { "value": "{spacing.2}" }
+      },
+      "confirmModal": {
+        "padding": { "value": "{spacing.6}" },
+        "gap": { "value": "{spacing.4}" }
+      }
+    }
+  }
+}

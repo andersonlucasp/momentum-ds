@@ -3,6 +3,10 @@ export * from './components/Button';
 export * from './components/Input';
 export * from './components/Text';
 export * from './components/View';
+export * from './components/Card';
+export * from './components/Badge';
+export * from './components/Modal';
+export * from './components/BottomTabBar';
 
 // Hooks
 export * from './hooks/useTheme';
@@ -13,5 +17,5 @@ export * from './hooks/useResponsive';
 export * from './theme/light';
 export * from './theme/dark';
 
-// Re-export tokens
-export * from '@andersonlucasp/tokens';
+// Note: Import tokens separately
+// import { colors, spacing } from '@andersonlucasp/tokens';

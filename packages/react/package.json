@@ -25,7 +25,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "@andersonlucasp/components": "workspace:*"
+    "@andersonlucasp/components": "*"
   },
   "devDependencies": {
     "@types/react": "^18.2.45",

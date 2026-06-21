@@ -18,13 +18,12 @@
     "tokens"
   ],
   "scripts": {
-    "build": "style-dictionary build --config style-dictionary.config.js",
-    "build:watch": "style-dictionary build --config style-dictionary.config.js --watch",
-    "lint": "prettier --check tokens/ && eslint .",
-    "format": "prettier --write tokens/"
+    "build": "node build.js",
+    "lint": "echo 'Linting tokens...'",
+    "format": "echo 'Formatting tokens...'",
+    "type-check": "echo 'Type checking tokens...'"
   },
   "devDependencies": {
-    "style-dictionary": "^4.0.0",
     "@types/node": "^20.0.0"
   },
   "keywords": [

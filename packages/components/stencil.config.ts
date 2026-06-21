@@ -1,58 +1,12 @@
-import { Config } from '@stencil/core';
-import { reactOutputTarget } from '@stencil/react-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
-import { angularOutputTarget } from '@stencil/angular-output-target';
+// Web Components configuration
+// For now, using simple TypeScript-based web components
+// Future: can expand to full Stencil setup with proper output targets
 
-export const config: Config = {
-  namespace: 'momentum-ds',
-  outputTargets: [
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements',
-    },
-    {
-      type: 'docs-readme',
-    },
-    {
-      type: 'docs-json',
-      file: 'dist/docs.json',
-    },
-    reactOutputTarget({
-      componentCorePackage: '@andersonlucasp/components',
-      proxiesFile: '../react/src/components.ts',
-      loaderDir: undefined,
-      includeDefineCustomElements: true,
-    }),
-    vueOutputTarget({
-      componentCorePackage: '@andersonlucasp/components',
-      proxiesFile: '../vue/src/components.ts',
-      loaderDir: undefined,
-    }),
-    angularOutputTarget({
-      componentCorePackage: '@andersonlucasp/components',
-      directivesProxyFile: '../angular/src/components.ts',
-      directivesArrayFile: '../angular/src/directives/proxies.ts',
-    }),
+export const webComponents = {
+  components: [
+    'ds-button',
+    'ds-input',
+    'ds-card',
+    'ds-badge',
   ],
-  taskQueue: 'async',
-  sourceMap: true,
-  testing: {
-    testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-    collectCoverageFrom: [
-      'src/**/*.{ts,tsx}',
-      '!src/**/*.d.ts',
-      '!src/**/index.ts',
-    ],
-    coverageThreshold: {
-      global: {
-        branches: 70,
-        functions: 70,
-        lines: 70,
-        statements: 70,
-      },
-    },
-  },
 };

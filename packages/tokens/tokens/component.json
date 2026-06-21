@@ -1,0 +1,63 @@
+{
+  "component": {
+    "button": {
+      "height": {
+        "sm": { "value": "32px" },
+        "md": { "value": "40px" },
+        "lg": { "value": "48px" }
+      },
+      "padding": {
+        "sm": { "value": "{spacing.2} {spacing.3}" },
+        "md": { "value": "{spacing.3} {spacing.4}" },
+        "lg": { "value": "{spacing.4} {spacing.6}" }
+      },
+      "gap": { "value": "{spacing.2}" },
+      "borderRadius": { "value": "{spacing.2}" }
+    },
+    "input": {
+      "height": {
+        "sm": { "value": "32px" },
+        "md": { "value": "40px" },
+        "lg": { "value": "48px" }
+      },
+      "padding": {
+        "sm": { "value": "{spacing.2} {spacing.3}" },
+        "md": { "value": "{spacing.3} {spacing.4}" },
+        "lg": { "value": "{spacing.3} {spacing.4}" }
+      },
+      "borderRadius": { "value": "{spacing.2}" },
+      "borderWidth": { "value": "1px" },
+      "fontSize": { "value": "{fontSize.base}" }
+    },
+    "card": {
+      "padding": { "value": "{spacing.4}" },
+      "gap": { "value": "{spacing.3}" },
+      "borderRadius": { "value": "{spacing.3}" },
+      "borderWidth": { "value": "1px" },
+      "shadow": { "value": "0 1px 3px 0 rgba(0, 0, 0, 0.1)" }
+    },
+    "modal": {
+      "padding": { "value": "{spacing.6}" },
+      "gap": { "value": "{spacing.4}" },
+      "borderRadius": { "value": "{spacing.3}" },
+      "minWidth": { "value": "320px" },
+      "maxWidth": { "value": "480px" }
+    },
+    "badge": {
+      "padding": {
+        "sm": { "value": "{spacing.1} {spacing.2}" },
+        "md": { "value": "{spacing.2} {spacing.3}" },
+        "lg": { "value": "{spacing.2} {spacing.4}" }
+      },
+      "borderRadius": { "value": "9999px" },
+      "fontSize": { "value": "{fontSize.xs}" }
+    },
+    "toast": {
+      "padding": { "value": "{spacing.4}" },
+      "gap": { "value": "{spacing.3}" },
+      "borderRadius": { "value": "{spacing.2}" },
+      "minWidth": { "value": "320px" },
+      "maxWidth": { "value": "480px" }
+    }
+  }
+}
