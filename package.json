@@ -1,0 +1,43 @@
+{
+  "name": "momentum-ds",
+  "version": "0.0.0",
+  "description": "Design System for Academy Digital Products - Web & Mobile",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "nx run-many --targets serve --all",
+    "build": "nx run-many --targets build --all",
+    "build:tokens": "nx run tokens:build",
+    "build:components": "nx run components:build",
+    "build:rn": "nx run rn:build",
+    "test": "nx run-many --targets test --all",
+    "test:watch": "nx run-many --targets test --all --watch",
+    "test:rn": "nx run rn:test",
+    "lint": "nx run-many --targets lint --all",
+    "type-check": "nx run-many --targets type-check --all",
+    "clean": "nx reset && rm -rf dist node_modules packages/*/node_modules packages/*/dist",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "figma:connect": "figma connect --config .figma/config.json",
+    "figma:sync": "node tools/figma-sync/export-tokens.js"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@figma/code-connect": "^0.1.1",
+    "@nrwl/cli": "^20.0.0",
+    "@nrwl/nx-cloud": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "andersonlucasp/momentum-ds"
+    }
+  ],
+  "commit": false,
+  "fixed": [
+    [
+      "@andersonlucasp/tokens",
+      "@andersonlucasp/components",
+      "@andersonlucasp/react",
+      "@andersonlucasp/rn"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranches": [
+    "main"
+  ],
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

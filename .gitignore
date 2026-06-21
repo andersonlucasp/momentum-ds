@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# Production
+dist/
+build/
+*.tsbuildinfo
+
+# Nx
+.nx/
+.nxcache/
+dist/nx
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Changesets
+.changeset/!(config.json)
+
+# Expo
+.expo/
+.expo-shared/
+
+# Generated files
+packages/react/src/components.ts
+packages/angular/src/components.ts
+packages/vue/src/components.ts
+
+# Temporary
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

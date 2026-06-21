@@ -1,0 +1,42 @@
+{
+  "name": "@andersonlucasp/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for Momentum DS - shared across web and mobile",
+  "main": "./build/index.js",
+  "module": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js",
+      "types": "./build/index.d.ts"
+    },
+    "./css": "./build/tokens.css"
+  },
+  "files": [
+    "build",
+    "tokens"
+  ],
+  "scripts": {
+    "build": "style-dictionary build --config style-dictionary.config.js",
+    "build:watch": "style-dictionary build --config style-dictionary.config.js --watch",
+    "lint": "prettier --check tokens/ && eslint .",
+    "format": "prettier --write tokens/"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "momentum"
+  ],
+  "author": "Lucas Anderson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andersonlucasp/momentum-ds.git",
+    "directory": "packages/tokens"
+  }
+}

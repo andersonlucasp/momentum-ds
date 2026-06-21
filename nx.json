@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "andersonlucasp",
+  "projectNameAndRootFormat": "derived",
+  "sourceControl": {
+    "defaultBase": "main"
+  },
+  "plugins": [
+    {
+      "plugin": "@nrwl/nx/core/plugins",
+      "options": {
+        "projectPrefix": "",
+        "standaloneConfig": false
+      }
+    }
+  ],
+  "defaultProject": "components",
+  "defaultBase": "main"
+}
