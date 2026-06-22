@@ -1,0 +1,132 @@
+# 🎨 Momentum DS - Component Library
+
+Welcome to **Momentum DS** Storybook! This is an interactive documentation for all React Native components designed for academy and fitness digital products.
+
+## 📚 What is Storybook?
+
+Storybook is a tool for building and testing UI components in isolation. You can:
+
+- 🎯 **View all components** in one place
+- 🎮 **Interact** with them using controls
+- 📖 **Read documentation** for each component
+- 💻 **Copy code** snippets and use them in your apps
+- 🎨 **Test different states** (disabled, loading, etc)
+
+## 🚀 Quick Start
+
+### Using Momentum DS in Your App
+
+```bash
+npm install @andersonlucasp/rn @andersonlucasp/tokens
+```
+
+### Example Code
+
+```tsx
+import { DsButton, DsCard, DsBadge } from '@andersonlucasp/rn';
+import { colors, spacing } from '@andersonlucasp/tokens';
+
+export function MyApp() {
+  return (
+    <DsCard variant="elevated" padding="md">
+      <DsText weight="semibold">Yoga Class</DsText>
+      <DsBadge variant="success">Available (5)</DsBadge>
+      <DsButton variant="primary">Reserve Class</DsButton>
+    </DsCard>
+  );
+}
+```
+
+## 📖 Navigation
+
+### Components
+- **Button** - Clickable actions (primary, secondary, danger)
+- **Input** - Text input fields
+- **Card** - Container component
+- **Badge** - Status labels
+- **Text** - Typography component
+
+### Foundations (Coming Soon)
+- **Colors** - Design palette
+- **Typography** - Font scales
+- **Spacing** - Spacing system
+
+### Academy Examples (Coming Soon)
+- **Class Card** - Schedule display
+- **Login Form** - Authentication
+- **Class List** - Browsable classes
+
+## 🎯 How to Use This Storybook
+
+1. **Browse Stories** - Click on components in the left sidebar
+2. **Interact** - Use the Controls tab to change props
+3. **Copy Code** - Use the Show Code button to copy snippets
+4. **Read Docs** - Each component has full documentation
+
+## 🔧 Controls
+
+Each story has interactive **Controls** where you can:
+
+- Change the `variant` (primary, secondary, danger, etc)
+- Adjust the `size` (sm, md, lg)
+- Toggle `disabled`, `loading`, `required` states
+- Change text and placeholders
+
+Click a control value and watch the component update in real-time!
+
+## 🎨 Design Tokens
+
+All components use design tokens for colors, spacing, and typography:
+
+```tsx
+import { colors, spacing, fontSize } from '@andersonlucasp/tokens';
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.background.primary,
+    padding: spacing.lg,
+  },
+  text: {
+    color: colors.text.primary,
+    fontSize: fontSize.base,
+  },
+});
+```
+
+## 📱 For Academy Apps
+
+Momentum DS is designed specifically for academy and fitness apps. Examples included:
+
+- **Class Scheduling** - Display classes with availability
+- **Instructor Profiles** - Show instructors and ratings
+- **Booking Flows** - Reserve classes with confirmation
+- **Status Badges** - Show "Available", "Full", "Waitlist"
+
+## 🔗 Links
+
+- **GitHub** - https://github.com/andersonlucasp/momentum-ds
+- **npm** - @andersonlucasp/rn
+- **Figma** - Design file with Code Connect
+
+## 🛠️ Features
+
+✅ **React Native Components** - Built for iOS, Android, and Web  
+✅ **Design Tokens** - Shared styling across platforms  
+✅ **TypeScript** - Full type safety  
+✅ **Accessible** - WCAG compliant  
+✅ **Theme Support** - Light and dark modes  
+✅ **Production Ready** - Used in real academy apps  
+
+## 🚀 Next Steps
+
+1. Explore components in the left sidebar
+2. Click on any component to see it in action
+3. Use Controls to test different prop combinations
+4. Copy code snippets for your app
+5. Check out academy examples for real-world usage
+
+---
+
+**Happy building!** 🎉
+
+For questions or feedback, visit https://github.com/andersonlucasp/momentum-ds/issues
