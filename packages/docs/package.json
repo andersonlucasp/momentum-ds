@@ -4,24 +4,20 @@
   "description": "Momentum DS - Storybook Documentation",
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "type-check": "tsc --noEmit"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@andersonlucasp/rn": "file:../rn",
-    "@andersonlucasp/tokens": "file:../tokens"
+    "@andersonlucasp/tokens": "file:../tokens",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "storybook": "^8.0.0",
-    "@storybook/react": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-controls": "^8.0.0",
-    "@storybook/addon-docs": "^8.0.0",
-    "@storybook/addon-themes": "^8.0.0",
+    "@storybook/react-webpack5": "^8.6.18",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "storybook": "^8.0.0",
     "typescript": "^5.3.3"
   }
 }

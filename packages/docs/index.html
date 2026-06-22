@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum DS - Storybook</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f6f9fc;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: white;
+      border-right: 1px solid #e5e8eb;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .nav-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #666;
+      transition: all 0.2s;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .nav-item:hover {
+      background: #f3f3f3;
+      color: #333;
+    }
+
+    .nav-item.active {
+      background: #0ea5e9;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-group {
+      margin-bottom: 20px;
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    /* Top bar */
+    .topbar {
+      border-bottom: 1px solid #e5e8eb;
+      padding: 12px 24px;
+      background: white;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Canvas area */
+    .canvas {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .canvas-content {
+      flex: 1;
+      padding: 48px;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .component-demo {
+      background: white;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      min-width: 300px;
+      text-align: center;
+    }
+
+    /* Controls panel */
+    .controls-panel {
+      width: 300px;
+      border-left: 1px solid #e5e8eb;
+      padding: 24px;
+      overflow-y: auto;
+      background: #f9fafb;
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    .control-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .control-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #d9dcde;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    /* Buttons */
+    .button-primary {
+      background: #0284c7;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .button-primary:hover {
+      background: #0369a1;
+    }
+
+    .button-secondary {
+      background: #f3f4f6;
+      color: #111827;
+      border: 1px solid #d1d5db;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .button-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .button-danger {
+      background: #dc2626;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .button-danger:hover {
+      background: #b91c1c;
+    }
+
+    /* Story content */
+    .story-content {
+      display: none;
+    }
+
+    .story-content.active {
+      display: block;
+    }
+
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    /* Badge styles */
+    .badge-demo {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 12px;
+      margin: 4px;
+    }
+
+    .badge-success { background: #dcfce7; color: #15803d; }
+    .badge-warning { background: #fef3c7; color: #b45309; }
+    .badge-danger { background: #fee2e2; color: #991b1b; }
+
+    /* Input demo */
+    .input-demo {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    /* Card demo */
+    .card-demo {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .card-demo.elevated {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: none;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .intro-content {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .intro-content h1 {
+      margin-bottom: 16px;
+      color: #0ea5e9;
+    }
+
+    .intro-content p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .intro-content code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="nav-group">
+        <div class="sidebar-title">Getting Started</div>
+        <a class="nav-item active" onclick="showStory('introduction')">📚 Introduction</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="sidebar-title">Components</div>
+        <a class="nav-item" onclick="showStory('button')">🔘 Button</a>
+        <a class="nav-item" onclick="showStory('input')">⌨️ Input</a>
+        <a class="nav-item" onclick="showStory('card')">📦 Card</a>
+        <a class="nav-item" onclick="showStory('badge')">🏷️ Badge</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="sidebar-title">Academy Examples</div>
+        <a class="nav-item" onclick="showStory('class-card')">🎯 Class Card</a>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <div class="topbar">
+        <span id="breadcrumb">📚 Introduction</span>
+      </div>
+
+      <!-- Canvas -->
+      <div class="canvas">
+        <div class="canvas-content" style="flex: 1;">
+          <!-- Introduction Story -->
+          <div id="story-introduction" class="story-content active">
+            <div class="intro-content">
+              <h1>🎨 Momentum DS - Component Library</h1>
+              <p><strong>Welcome to Momentum DS Storybook!</strong></p>
+              <p>This is an interactive component library for React Native apps in the academy and fitness industry.</p>
+
+              <h3 style="margin-top: 24px; margin-bottom: 12px;">🚀 Quick Start</h3>
+              <p>Install the package:</p>
+              <div class="code-block">npm install @andersonlucasp/rn @andersonlucasp/tokens</div>
+
+              <p style="margin-top: 16px;">Use a component:</p>
+              <div class="code-block">import { DsButton, DsCard } from '@andersonlucasp/rn';\n\n&lt;DsButton variant="primary"&gt;Click me&lt;/DsButton&gt;</div>
+
+              <h3 style="margin-top: 24px; margin-bottom: 12px;">📚 Navigation</h3>
+              <p>Click on any component in the left sidebar to see it in action.</p>
+              <p style="margin-top: 12px;">Each story includes:</p>
+              <ul style="margin-left: 20px; margin-top: 8px;">
+                <li>🎮 Interactive canvas</li>
+                <li>🎛️ Controls to change props</li>
+                <li>💻 Code preview</li>
+                <li>📖 Full documentation</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Button Story -->
+          <div id="story-button" class="story-content">
+            <div class="component-demo">
+              <h2 style="margin-bottom: 24px;">Button Component</h2>
+              <div style="margin: 16px 0;">
+                <button class="button-primary" id="demo-button">Primary Button</button>
+              </div>
+              <p style="color: #666; font-size: 12px; margin-top: 16px;">Adjust controls on the right →</p>
+            </div>
+          </div>
+
+          <!-- Input Story -->
+          <div id="story-input" class="story-content">
+            <div class="component-demo" style="width: 400px;">
+              <h2 style="margin-bottom: 24px;">Input Component</h2>
+              <input type="text" class="input-demo" id="demo-input" placeholder="Type something..." />
+              <p style="color: #666; font-size: 12px; margin-top: 16px;">Try different sizes with controls →</p>
+            </div>
+          </div>
+
+          <!-- Card Story -->
+          <div id="story-card" class="story-content">
+            <div class="component-demo" style="width: 400px;">
+              <h2 style="margin-bottom: 24px;">Card Component</h2>
+              <div class="card-demo" id="demo-card">
+                <div class="card-title">Example Card</div>
+                <div class="card-subtitle">This is a card component for displaying content</div>
+                <p>Adjust the variant with controls on the right →</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badge Story -->
+          <div id="story-badge" class="story-content">
+            <div class="component-demo">
+              <h2 style="margin-bottom: 24px;">Badge Component</h2>
+              <div style="margin: 24px 0;">
+                <span class="badge-demo badge-success" id="demo-badge">Available (5)</span>
+              </div>
+              <p style="color: #666; font-size: 12px; margin-top: 16px;">Perfect for showing status in academy apps</p>
+            </div>
+          </div>
+
+          <!-- Class Card Story -->
+          <div id="story-class-card" class="story-content">
+            <div class="component-demo" style="width: 450px;">
+              <h2 style="margin-bottom: 24px;">Academy Example: Class Card</h2>
+              <div class="card-demo elevated">
+                <div class="card-title">Yoga Class</div>
+                <div class="card-subtitle">Monday, 8:00 AM - 9:00 AM</div>
+                <p style="font-size: 13px; color: #666; margin-bottom: 16px;">Instructor: Sarah Anderson</p>
+                <div style="margin-bottom: 16px;">
+                  <span class="badge-demo badge-success">Available (5)</span>
+                </div>
+                <button class="button-primary">Reserve Class</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+          <div class="control-group" id="controls-button">
+            <label class="control-label">Variant</label>
+            <select class="control-input" onchange="updateButtonDemo()">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+              <option value="danger">Danger</option>
+            </select>
+
+            <label class="control-label" style="margin-top: 12px;">Size</label>
+            <select class="control-input" onchange="updateButtonDemo()">
+              <option value="12px">Small</option>
+              <option value="14px" selected>Medium</option>
+              <option value="16px">Large</option>
+            </select>
+
+            <label style="margin-top: 12px; display: flex; align-items: center;">
+              <input type="checkbox" onchange="updateButtonDemo()"> Disabled
+            </label>
+          </div>
+
+          <div class="control-group" id="controls-input" style="display: none;">
+            <label class="control-label">Size</label>
+            <select class="control-input" onchange="updateInputDemo()">
+              <option value="8px">Small</option>
+              <option value="10px" selected>Medium</option>
+              <option value="12px">Large</option>
+            </select>
+
+            <label class="control-label" style="margin-top: 12px;">State</label>
+            <select class="control-input" onchange="updateInputDemo()">
+              <option value="default">Default</option>
+              <option value="success">Success</option>
+              <option value="error">Error</option>
+            </select>
+          </div>
+
+          <div class="control-group" id="controls-card" style="display: none;">
+            <label class="control-label">Variant</label>
+            <select class="control-input" onchange="updateCardDemo()">
+              <option value="default">Default</option>
+              <option value="elevated" selected>Elevated</option>
+              <option value="outlined">Outlined</option>
+            </select>
+          </div>
+
+          <div class="control-group" id="controls-badge" style="display: none;">
+            <label class="control-label">Variant</label>
+            <select class="control-input" onchange="updateBadgeDemo()">
+              <option value="success" selected>Success</option>
+              <option value="warning">Warning</option>
+              <option value="danger">Danger</option>
+            </select>
+          </div>
+
+          <div id="controls-empty" style="color: #999; font-size: 12px;">
+            Select a component to see controls
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showStory(storyId) {
+      // Hide all stories
+      document.querySelectorAll('.story-content').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+      // Show selected story
+      document.getElementById(`story-${storyId}`).classList.add('active');
+      event.target.classList.add('active');
+
+      // Update breadcrumb
+      const labels = {
+        introduction: '📚 Introduction',
+        button: '🔘 Button',
+        input: '⌨️ Input',
+        card: '📦 Card',
+        badge: '🏷️ Badge',
+        'class-card': '🎯 Class Card'
+      };
+      document.getElementById('breadcrumb').textContent = labels[storyId];
+
+      // Show/hide controls
+      document.querySelectorAll('[id^="controls-"]').forEach(c => c.style.display = 'none');
+      document.getElementById('controls-empty').style.display = 'block';
+
+      if (storyId === 'button') {
+        document.getElementById('controls-button').style.display = 'block';
+        document.getElementById('controls-empty').style.display = 'none';
+      } else if (storyId === 'input') {
+        document.getElementById('controls-input').style.display = 'block';
+        document.getElementById('controls-empty').style.display = 'none';
+      } else if (storyId === 'card') {
+        document.getElementById('controls-card').style.display = 'block';
+        document.getElementById('controls-empty').style.display = 'none';
+      } else if (storyId === 'badge') {
+        document.getElementById('controls-badge').style.display = 'block';
+        document.getElementById('controls-empty').style.display = 'none';
+      }
+    }
+
+    function updateButtonDemo() {
+      const variant = document.querySelector('#controls-button select:nth-child(2)').value;
+      const size = document.querySelector('#controls-button select:nth-child(4)').value;
+      const disabled = document.querySelector('#controls-button input[type="checkbox"]').checked;
+
+      const btn = document.getElementById('demo-button');
+      btn.className = `button-${variant}`;
+      btn.style.fontSize = size;
+      btn.disabled = disabled;
+      btn.opacity = disabled ? '0.6' : '1';
+    }
+
+    function updateInputDemo() {
+      const state = document.querySelector('#controls-input select:nth-child(4)').value;
+      const input = document.getElementById('demo-input');
+
+      if (state === 'success') {
+        input.style.borderColor = '#16a34a';
+      } else if (state === 'error') {
+        input.style.borderColor = '#dc2626';
+      } else {
+        input.style.borderColor = '#d1d5db';
+      }
+    }
+
+    function updateCardDemo() {
+      const variant = document.querySelector('#controls-card select').value;
+      const card = document.getElementById('demo-card');
+
+      card.className = 'card-demo';
+      if (variant === 'elevated') {
+        card.classList.add('elevated');
+      } else if (variant === 'outlined') {
+        card.style.border = '1px solid #d1d5db';
+      }
+    }
+
+    function updateBadgeDemo() {
+      const variant = document.querySelector('#controls-badge select').value;
+      const badge = document.getElementById('demo-badge');
+
+      badge.className = `badge-demo badge-${variant}`;
+    }
+  </script>
+</body>
+</html>
