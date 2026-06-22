@@ -1,0 +1,20 @@
+# Expo
+.expo/
+.expo-shared/
+dist/
+
+# Node
+node_modules/
+npm-debug.log
+
+# TypeScript
+*.tsbuildinfo
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
